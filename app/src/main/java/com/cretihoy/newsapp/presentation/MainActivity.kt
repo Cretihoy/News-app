@@ -1,30 +1,35 @@
 package com.cretihoy.newsapp.presentation
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.cretihoy.newsapp.R
-import com.cretihoy.newsapp.data.di.DataModuleProvide
-import com.cretihoy.newsapp.data.model.Category
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.cretihoy.newsapp.domain.model.CategoryModel
+import com.cretihoy.newsapp.presentation.recyclerCategory.CategoryAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
+import javax.inject.Inject
+import javax.inject.Provider
 
-class MainActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity : MvpAppCompatActivity(), MainView {
+
+    private val recycler: RecyclerView by lazy { findViewById(R.id.main_recycler_business_news) }
+    private val adapter = CategoryAdapter()
+
+    @Inject
+    lateinit var presenterProvider: Provider<MainPresenter>
+    private val presenter by moxyPresenter { presenterProvider.get() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        loadNews()
+        recycler.adapter = adapter
+        presenter.loadNews()
     }
 
-    private fun loadNews() {
-        val okHttp = DataModuleProvide.provideOkHttpClient()
-        val service = DataModuleProvide.provideApiClient(okHttp)
-        CoroutineScope(Dispatchers.Main).launch {
-            Category.values().forEach { category ->
-                service.getAllBusinessNews(category)
-            }
-        }
+    override fun populate(result: List<CategoryModel>) {
+        adapter.setItems(result)
     }
 }

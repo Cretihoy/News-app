@@ -8,7 +8,7 @@
     tools:context=".presentation.MainActivity">
 
     <TextView
-        android:id="@+id/category_text_business"
+        android:id="@+id/item_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -16,12 +16,12 @@
         android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/category_recycler_news"
+        android:id="@+id/item_category_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:scrollbars="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_news" />
+        tools:listitem="@layout/item_article" />
 
 </LinearLayout>

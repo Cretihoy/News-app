@@ -1,27 +1,29 @@
-package com.cretihoy.newsapp.data.model
+package com.cretihoy.newsapp.data.newmodel
 
 import com.google.gson.annotations.SerializedName
 
-enum class Category {
+enum class Category(
+    val title: String
+) {
 
     @SerializedName("business")
-    BUSINESS,
+    BUSINESS("Business"),
 
     @SerializedName("entertainment")
-    ENTERTAINMENT,
+    ENTERTAINMENT("Entertainment"),
 
     @SerializedName("general")
-    GENERAL,
+    GENERAL("General"),
 
     @SerializedName("health")
-    HEALTH,
+    HEALTH("Health"),
 
     @SerializedName("science")
-    SCIENCE,
+    SCIENCE("Science"),
 
     @SerializedName("sports")
-    SPORTS,
+    SPORTS("Sports"),
 
     @SerializedName("technology")
-    TECHNOLOGY
+    TECHNOLOGY("Technology")
 }

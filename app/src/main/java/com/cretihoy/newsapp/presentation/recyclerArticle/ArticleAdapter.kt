@@ -29,11 +29,11 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleViewHolder>() {
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = items[position]
         holder.run {
+            title.text = article.title
             if (article.imageUrl == null) {
-                title.text = "IMG NULL"
+                null
             } else {
                 image.load(article.imageUrl)
-                title.text = article.title
             }
         }
     }

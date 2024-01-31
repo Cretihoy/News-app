@@ -5,6 +5,7 @@
     android:layout_width="256dp"
     android:layout_height="256dp"
     android:layout_marginStart="10dp"
+    android:backgroundTint="?colorSecondary"
     app:cardCornerRadius="25dp">
 
     <ImageView
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +26,7 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         android:padding="16dp"
-        android:textColor="@color/white"
+        android:textColor="?colorOnPrimary"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/item_article_image"
         app:layout_constraintEnd_toEndOf="@id/item_article_image"

@@ -18,7 +18,7 @@ class ArticleMapper
             articles = response.articles.map {
                 mapArticle(it)
             },
-            categoryName = category.title
+            categoryTitle = category.title
         )
     }
 
